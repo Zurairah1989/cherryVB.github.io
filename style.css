@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +11,11 @@
         margin:0;
         padding:0;
         box-sizing:border-box;
-        font-family: 'Segoe UI', sans-serif;
+        font-family:'Segoe UI', sans-serif;
     }
 
     body{
-        background: linear-gradient(135deg, #ffe5ec, #fff1f2);
+        background:linear-gradient(135deg,#ffe5ec,#fff1f2);
         min-height:100vh;
         display:flex;
         justify-content:center;
@@ -70,7 +71,7 @@
         background:#ffe5ec;
         padding:15px;
         border-radius:15px;
-        transition:0.3s;
+        transition:transform 0.3s ease;
     }
 
     .fact-card:hover{
@@ -92,15 +93,15 @@
         font-size:1rem;
         cursor:pointer;
         margin-top:25px;
-        transition:0.3s;
+        transition:background 0.3s ease;
     }
 
     button:hover{
         background:#ff2d73;
     }
 </style>
-
 </head>
+
 <body>
 
 <div class="container">
@@ -115,7 +116,7 @@
     <div class="story-box">
         Cherry woke up from her afternoon nap and noticed a mysterious sound coming from the kitchen.
         Curious as always, she tiptoed across the house. What she found changed her day forever:
-        a tiny butterfly trapped inside the window. Cherry carefully approached, determined to help her
+        a tiny butterfly trapped by the window. Cherry carefully approached, determined to help her
         new friend find freedom.
     </div>
 
@@ -141,8 +142,27 @@
         </div>
     </div>
 
-    <button>Read More Adventures</button>
+    <button onclick="showAdventure()">Read More Adventures</button>
 </div>
+
+<script>
+function showAdventure() {
+    alert("🐾 Cherry's next adventure is coming soon!");
+}
+</script>
+
+<!-- ElevenLabs Widget -->
+<elevenlabs-convai
+    agent-id="agent_2301kvyvwtpmf1abwj6h75xn8n03">
+</elevenlabs-convai>
+
+<script
+    src="https://unpkg.com/@elevenlabs/convai-widget-embed"
+    async>
+</script>
 
 </body>
 </html>
+```
+
+
