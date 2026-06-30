@@ -1,95 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cherry's Story 🐱</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cherry's World 🐱</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-            background-color: #fff8f5;
-            color: #333;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", sans-serif;
+    }
 
-        h1 {
-            color: #ff6b81;
-            text-align: center;
-        }
+    body {
+        min-height: 100vh;
+        overflow: hidden;
+        background: linear-gradient(135deg, #ffe6f0, #fff7fb);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+    }
 
-        h2 {
-            color: #444;
-            border-bottom: 2px solid #ff6b81;
-            padding-bottom: 5px;
-        }
+    /* Cherry background text */
+    body::before {
+        content: "Cherry Cherry Cherry Cherry Cherry Cherry Cherry Cherry";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        font-size: 60px;
+        color: rgba(255, 77, 141, 0.08);
+        transform: rotate(-25deg);
+        line-height: 140px;
+        z-index: 0;
+        animation: moveBg 25s linear infinite;
+        white-space: pre-wrap;
+    }
 
-        .card {
-            background: white;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+    @keyframes moveBg {
+        from { transform: translate(0,0) rotate(-25deg); }
+        to { transform: translate(-200px,-200px) rotate(-25deg); }
+    }
 
-        ul {
-            line-height: 1.8;
+    .card {
+        position: relative;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        border-radius: 25px;
+        width: 90%;
+        max-width: 700px;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        font-size: 3rem;
+        color: #ff4d8d;
+    }
+
+    p {
+        margin-top: 15px;
+        color: #555;
+        line-height: 1.6;
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        margin-top: 25px;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 50px;
+        background: #ff4d8d;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    /* Floating cats animation */
+    .floating-cat {
+        position: absolute;
+        font-size: 30px;
+        animation: floatUp 1.5s ease-out forwards;
+        pointer-events: none;
+        z-index: 999;
+    }
+
+    @keyframes floatUp {
+        0% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
-    </style>
+        100% {
+            opacity: 0;
+            transform: translateY(-150px) scale(1.5);
+        }
+    }
+</style>
+
 </head>
+
 <body>
 
-    <h1>🐱 The Adventures of Cherry</h1>
+<div class="card">
+    <h1>Cherry 🐱</h1>
+    <p>
+        Welcome to Cherry’s world 🌸 Click anywhere and watch cute cats appear!
+    </p>
+    <button class="btn">Explore Cherry</button>
+</div>
 
-    <div class="card">
-        <h2>About Cherry</h2>
-        <p>
-            Cherry is a lovable cat with a unique personality. She enjoys chasing
-            shadows, taking long naps, and making sure everyone in the house knows
-            she's the queen.
-        </p>
-    </div>
+<script>
+document.addEventListener("click", function(e) {
+    const cat = document.createElement("div");
 
-    <div class="card">
-        <h2>Personality</h2>
-        <ul>
-            <li>Playful</li>
-            <li>Curious</li>
-            <li>Affectionate</li>
-            <li>Mischievous</li>
-        </ul>
-    </div>
+    const cats = ["🐱", "🐈", "🐾", "😺", "😻"];
+    cat.innerText = cats[Math.floor(Math.random() * cats.length)];
 
-    <div class="card">
-        <h2>Story Prompt</h2>
-        <p>
-            Write a heartwarming story about Cherry, a cat who discovers a mysterious
-            object hidden in the house. Along the way, she meets new animal friends,
-            overcomes challenges, and learns valuable lessons about courage and friendship.
-        </p>
-    </div>
+    cat.classList.add("floating-cat");
 
-    <div class="card">
-        <h2>Fun Facts</h2>
-        <ul>
-            <li>Birthday: TBD</li>
-            <li>Favorite Toy: Feather Wand</li>
-            <li>Favorite Food: Tuna Treats</li>
-            <li>Funniest Habit: Zoomies at 3 AM</li>
-        </ul>
-    </div>
+    cat.style.left = e.clientX + "px";
+    cat.style.top = e.clientY + "px";
 
-    <!-- ElevenLabs AI Widget -->
-    <elevenlabs-convai
-        agent-id="agent_2301kvyvwtpmf1abwj6h75xn8n03">
-    </elevenlabs-convai>
+    document.body.appendChild(cat);
 
-    <script
-        src="https://unpkg.com/@elevenlabs/convai-widget-embed"
-        async>
-    </script>
+    setTimeout(() => {
+        cat.remove();
+    }, 1500);
+});
+</script>
 
 </body>
 </html>
